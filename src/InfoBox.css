@@ -2,7 +2,165 @@
     text-align: center;
 }
 
-.cardContainer{
+.glass-card {
+    width: 750px;
+    padding: 20px;
+    margin-top: 2.5rem;
+    border-radius: 25px;
+
     display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    /* Glass effect */
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+
+    /* Border & shadow */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25),inset 0 0 20px rgba(255, 255, 255, 0.1);
+
+    /* Text */
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.glass-card:hover {
+    transform: scale(1.01);
+    transition: 0.3s;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        inset 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+.cityInfo h1{
+    margin: 0;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.cityInfo p{
+    margin: 1px 0 0 0;
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+.top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    place-items: center;
+    padding: 15px;
+}
+.right:last-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.top img {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+.left {
+    /* width: 15rem; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.temp {
+    font-size: 80px;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+sup {
+    font-size: 0.6em;
+    vertical-align: super;
+    margin-left: 4px;
+}
+.main {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 5px 0;
+}
+.desc {
+    font-size: 18px;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.right {
+    text-align: center;
+    width: 12.5rem;
+    padding-left: 15px;
+}
+.right p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 5px;
+    font-size: 18px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 4px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+.stat-top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    opacity: 0.85;
+}
+.stat-item strong {
+    font-size: 19px;
+    font-weight: 600;
+}
+.stat-item:last-child {
+    border-right: none;
+}
+
+.extra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.extra p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 52px;
+    margin: 5px 0;
+    color: #fff;
+    font-weight: 550;
+}
+p {
+    opacity: 1;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.MuiDivider-root {
+    border-color: rgba(255, 255, 255, 0.2) !important;
 }

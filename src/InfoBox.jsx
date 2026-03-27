@@ -1,34 +1,80 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import "./InfoBox.css"
+import Divider from '@mui/material/Divider';
+import { Cloud, Speed, SunnySnowing, WbTwilight, Visibility, WaterDropTwoTone, ThermostatSharp, 
+    SevereColdSharp, AirSharp } from '@mui/icons-material';
+    import "./InfoBox.css"
 
 export default function InfoBox({info}) {
     const INIT_URL = "https://wmo.int/sites/default/files/styles/featured_image_x1_768x512/public/2023-12/thumbnails_5.jpg?h=d1cb525d&itok=aZ4qUGTc"
 
+const capitalize = (str = "") => {
+    return str.toLowerCase().split(" ")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");};
+
     return(
         <div className="InfoBox">
-                <div className='cardContainer'>
-                    <Card sx={{ maxWidth: 345 }}>
-                    <CardMedia
-                        sx={{ height: 140 }}
-                        image={INIT_URL}
-                        title="green iguana"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {info.city}
-                        </Typography>
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }} component={"span"}>
-                            <p>Temperature = {info.temp}&deg;C</p>
-                            <p>Humidity = {info.humidity}</p>
-                            <p>Min Temp = {info.tempMin}&deg;C</p>
-                            <p>Max Temp = {info.tempMax}&deg;C</p>
-                            <p>The weather can be described as <i>{info.weather}</i> and feels like {info.feelsLike}&deg;C</p>
-                        </Typography>
-                    </CardContent>
-                </Card>
+            <div className='glass-card'>
+                <div className="cityInfo">
+                    <h1>{info.city}, {info.country}</h1>
+                    <p>{info.date}  |  {info.time}</p>
+                </div>
+                <div className='top'>
+                        <img src={info.icon} alt="icon" />
+                    <div className="left">
+                        <h1 className="temp">{Math.round(info.temp)}<sup>&deg;C</sup></h1>
+                        <p className="main">{info.weather_main}</p>
+                        {(info.weather_main||"").toLowerCase() !== (info.weather_description||"").toLowerCase() && (
+                            <p className="desc">{capitalize(info.weather_description)}</p>)}
+                    </div>
+                    {/* <Divider orientation="vertical" variant="middle" flexItem /> */}
+                    <div className="right">
+                        <p><ThermostatSharp fontSize='large'/>Min: {info.tempMin}&deg;C</p>
+                        <p><ThermostatSharp fontSize='large'/>Max: {info.tempMax}&deg;C</p>
+                        <Divider component="div" role="presentation"/>
+                        <p><SevereColdSharp fontSize='large'/>Feels like: {info.feelsLike}&deg;C</p>
+                    </div>
+                </div>
+                <Divider component="div" role="presentation"/>
+                <div className='stats'>
+                    <div className="stat-item">
+                        <div className="stat-top">
+                            <WaterDropTwoTone fontSize='large'/>
+                            <span>Humidity</span>
+                        </div>
+                        <strong>{info.humidity}%</strong>
+                    </div>
+
+                    <div className="stat-item">
+                        <div className="stat-top">
+                            <AirSharp fontSize='large'/>
+                            <span>Wind</span>
+                        </div>
+                        <strong>{info.windSpeed} km/h {info.windDirection}</strong>
+                    </div>
+
+                    <div className="stat-item">
+                        <div className="stat-top">
+                            <Visibility fontSize='large'/>
+                            <span>Visibility</span>
+                        </div>
+                        <strong>{info.visibility} km</strong>
+                    </div>
+
+                    <div className="stat-item">
+                        <div className="stat-top">
+                            <Cloud fontSize='large'/>
+                            <span>Cloud</span>
+                        </div>
+                        <strong>{info.cloud}%</strong>
+                    </div>
+                </div>
+                <Divider component="div" role="presentation"/>
+                <div className='extra'> 
+                <p><Speed fontSize='large'/>Pressure: <b>{info.pressure} hPa</b></p>
+                    <Divider orientation="vertical" variant="middle" flexItem />
+                <p><WbTwilight fontSize='large'/>Sunrise: <b>{info.sunrise}</b></p>
+                    <Divider orientation="vertical" variant="middle" flexItem />
+                <p><SunnySnowing  fontSize='large'/>Sunset: <b>{info.sunset}</b></p>
+                </div>
             </div>
         </div>
     )

@@ -2,15 +2,33 @@ import SearchBox from "./SearchBox"
 import InfoBox from "./InfoBox"
 import { useState } from "react"
 
+    const now = new Date();
+    const date = now.toLocaleDateString("en-IN", { // Example: "Thursday, 27 March 2026"
+        weekday: "long", day: "numeric", month: "long", year: "numeric", });
+    const time = now.toLocaleTimeString("en-IN", { // Example: "10:45 AM"
+        hour: "2-digit", minute: "2-digit",});
+
 export default function WeatherApp() {
     const [weatherInfo, setWeatherInfo] = useState({
         city:"Wonderland",
-        feelsLike: 28.76,
-        humidity: 42,
-        temp: 28.97,
-        tempMax: 28.97,
-        tempMin: 28.97,
-        weather: "haze",
+        date:date,
+        time:time,
+        cloud: 40,
+        country: "IN",
+        feelsLike: 34.23,
+        humidity: 28,
+        icon: "https://openweathermap.org/payload/api/media/file/50d.png",
+        pressure: 1004,
+        sunrise: "5:46 AM",
+        sunset: "6:03 PM",
+        temp: 34.97,
+        tempMax: 34.97,
+        tempMin: 34.97,
+        visibility: 5,
+        weather_description: "haze",
+        weather_main: "Haze",
+        windDirection: "W",
+        windSpeed: 3.09,
     });
 
     let updateInfo = (newInfo) => {
@@ -19,7 +37,7 @@ export default function WeatherApp() {
 
     return (
         <div className="WeatherApp">
-            <br />
+            <br /><br />
             <SearchBox updateInfo={updateInfo}/>
             <InfoBox info={weatherInfo}/>
         </div>
