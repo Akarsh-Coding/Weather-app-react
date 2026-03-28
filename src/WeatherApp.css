@@ -10,7 +10,6 @@
   background-repeat: no-repeat;
 }
 
-/* NEW: wrapper for center alignment */
 .main-content {
   flex: 1;
   display: flex;

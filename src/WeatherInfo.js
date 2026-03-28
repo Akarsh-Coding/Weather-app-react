@@ -19,6 +19,17 @@ const getWindDirection = (deg = 0) => {
     return directions[Math.round(deg / 45) % 8];
 };
 
+const formatTime = (timestamp, timezone) => {
+    const date = new Date((timestamp + timezone) * 1000);
+
+    return date.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: "UTC"
+    });
+};
+
 const getDateTime = (timezone) => {
     const timezoneOffset = timezone * 1000; // convert sec → ms
     const nowUTC = new Date().getTime() + (new Date().getTimezoneOffset() * 60000);
@@ -62,8 +73,8 @@ export const getWeatherInfo = async (city) => {
         // Pressure
         pressure: jsonResponse.main.pressure,
         // Sun timings (convert to readable time)
-        sunrise: new Date(jsonResponse.sys.sunrise * 1000).toLocaleTimeString("en-IN", {hour: "2-digit", minute: "2-digit",}),
-        sunset: new Date(jsonResponse.sys.sunset * 1000).toLocaleTimeString("en-IN", {hour: "2-digit", minute: "2-digit",}),
+        sunrise: formatTime(jsonResponse.sys.sunrise, jsonResponse.timezone),
+        sunset: formatTime(jsonResponse.sys.sunset, jsonResponse.timezone),
     }
     return result;
 }

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import InfoBox from "./InfoBox"
 import NavBar from "./NavBar";
-import lightBg from "./assets/light.png";
+import lightBg from "./assets/light.jpg";
 import darkBg from "./assets/dark.jpg";
 
 
