@@ -4,22 +4,23 @@ import NavBar from "./NavBar";
 import lightBg from "./assets/light.png";
 import darkBg from "./assets/dark.jpg";
 
-const style = {backgroundImage: `url(${theme === "light" ? lightBg : darkBg})`,
-        backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat",}
 
 const now = new Date();
 const date = now.toLocaleDateString("en-IN", { // Example: "Thursday, 27 March 2026"
     weekday: "long", day: "numeric", month: "long", year: "numeric", });
-const time = now.toLocaleTimeString("en-IN", { // Example: "10:45 AM"
-    hour: "2-digit", minute: "2-digit",});
+    const time = now.toLocaleTimeString("en-IN", { // Example: "10:45 AM"
+        hour: "2-digit", minute: "2-digit",});
 
 export default function WeatherApp() {
     const [theme, setTheme] = useState("light");
-
+    
+    const style = {backgroundImage: `url(${theme === "light" ? lightBg : darkBg})`,
+        backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat",}
+    
     const toggleTheme = () => {
         setTheme((prev) => (prev === "light" ? "dark" : "light"));
     };
-
+    
     const [weatherInfo, setWeatherInfo] = useState({
         city:"Wonderland",
         date:date,
