@@ -4,10 +4,9 @@ import WeatherApp from "./WeatherApp";
 function App() {
   return (
     <>
-      <div className="Container" >
+      <div>
         <WeatherApp/>
       </div>
-      
     </>
   );
 }

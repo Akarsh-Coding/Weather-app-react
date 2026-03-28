@@ -1,14 +1,25 @@
-import SearchBox from "./SearchBox"
-import InfoBox from "./InfoBox"
 import { useState } from "react"
+import InfoBox from "./InfoBox"
+import NavBar from "./NavBar";
+import lightBg from "./assets/light.png";
+import darkBg from "./assets/dark.jpg";
 
-    const now = new Date();
-    const date = now.toLocaleDateString("en-IN", { // Example: "Thursday, 27 March 2026"
-        weekday: "long", day: "numeric", month: "long", year: "numeric", });
-    const time = now.toLocaleTimeString("en-IN", { // Example: "10:45 AM"
-        hour: "2-digit", minute: "2-digit",});
+const style = {backgroundImage: `url(${theme === "light" ? lightBg : darkBg})`,
+        backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat",}
+
+const now = new Date();
+const date = now.toLocaleDateString("en-IN", { // Example: "Thursday, 27 March 2026"
+    weekday: "long", day: "numeric", month: "long", year: "numeric", });
+const time = now.toLocaleTimeString("en-IN", { // Example: "10:45 AM"
+    hour: "2-digit", minute: "2-digit",});
 
 export default function WeatherApp() {
+    const [theme, setTheme] = useState("light");
+
+    const toggleTheme = () => {
+        setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    };
+
     const [weatherInfo, setWeatherInfo] = useState({
         city:"Wonderland",
         date:date,
@@ -36,10 +47,9 @@ export default function WeatherApp() {
     }
 
     return (
-        <div className="WeatherApp">
-            <br /><br />
-            <SearchBox updateInfo={updateInfo}/>
-            <InfoBox info={weatherInfo}/>
+        <div className={`WeatherApp ${theme}`} style={style}>
+            <NavBar toggleTheme={toggleTheme} theme={theme} updateInfo={updateInfo} setTheme={setTheme}/>
+            <InfoBox theme={theme} info={weatherInfo}/>
         </div>
     )
 }

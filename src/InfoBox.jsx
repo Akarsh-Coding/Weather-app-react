@@ -4,7 +4,6 @@ import { Cloud, Speed, SunnySnowing, WbTwilight, Visibility, WaterDropTwoTone, T
     import "./InfoBox.css"
 
 export default function InfoBox({info}) {
-    const INIT_URL = "https://wmo.int/sites/default/files/styles/featured_image_x1_768x512/public/2023-12/thumbnails_5.jpg?h=d1cb525d&itok=aZ4qUGTc"
 
 const capitalize = (str = "") => {
     return str.toLowerCase().split(" ")

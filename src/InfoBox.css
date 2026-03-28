@@ -1,11 +1,14 @@
 .InfoBox {
-    text-align: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .glass-card {
     width: 750px;
     padding: 20px;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     border-radius: 25px;
 
     display: flex;
