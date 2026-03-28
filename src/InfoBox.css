@@ -3,8 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
+    padding: 5px; 
+}
 .glass-card {
     width: 750px;
     padding: 20px;

@@ -15,7 +15,8 @@ export default function WeatherApp() {
     const [theme, setTheme] = useState("light");
     
     const style = {backgroundImage: `url(${theme === "light" ? lightBg : darkBg})`,
-        backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat",}
+        backgroundSize: "cover", backgroundPosition: "center", 
+        backgroundRepeat: "no-repeat",minHeight: "100vh",}
     
     const toggleTheme = () => {
         setTheme((prev) => (prev === "light" ? "dark" : "light"));
@@ -50,7 +51,9 @@ export default function WeatherApp() {
     return (
         <div className={`WeatherApp ${theme}`} style={style}>
             <NavBar toggleTheme={toggleTheme} theme={theme} updateInfo={updateInfo} setTheme={setTheme}/>
-            <InfoBox theme={theme} info={weatherInfo}/>
+            <div className="main-content">
+                <InfoBox theme={theme} info={weatherInfo}/>
+            </div>
         </div>
     )
 }
